@@ -29,11 +29,12 @@ ALLOWED_HOSTS = ['*']
 
 DOWNOLOAD_APPS = [
     'rest_framework',
-    'drf_yasg'
+    'drf_yasg',
 ]
 
 CREATED_APPS = [
-    'users'
+    'users',
+    'geeksfit',
 ]
 
 # Application definition
