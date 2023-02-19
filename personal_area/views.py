@@ -3,7 +3,6 @@ from .serializers import *
 from .models import *
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 
-
 # Create your views here.
 
 
