@@ -27,13 +27,16 @@ DEBUG = True if os.environ.get('DEBUG') == 'on' else False
 
 ALLOWED_HOSTS = ['*']
 
-DOWNOLOAD_APPS = [
+DOWNLOAD_APPS = [
     'rest_framework',
-    'drf_yasg'
+    'drf_yasg',
+    'phonenumber_field'
+
 ]
 
 CREATED_APPS = [
-    'users'
+    'users',
+    'personal_area',
 ]
 
 # Application definition
@@ -45,7 +48,7 @@ INSTALLED_APPS = [
                      'django.contrib.sessions',
                      'django.contrib.messages',
                      'django.contrib.staticfiles',
-                 ] + CREATED_APPS + DOWNOLOAD_APPS
+                 ] + CREATED_APPS + DOWNLOAD_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -83,12 +86,13 @@ WSGI_APPLICATION = 'Geekfit.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USER'),
-        'HOST': os.environ.get('DB_HOST'),
-        'PORT': os.environ.get('DB_PORT'),
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3'
+        # 'NAME': os.environ.get('DB_NAME'),
+        # 'USER': os.environ.get('DB_USER'),
+        # 'HOST': os.environ.get('DB_HOST'),
+        # 'PORT': os.environ.get('DB_PORT'),
+        # 'PASSWORD': os.environ.get('DB_PASSWORD'),
     }
 }
 
@@ -125,6 +129,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+MEDIA_URL = 'media/'
+
+MEDIA_ROOT = BASE_DIR / 'media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

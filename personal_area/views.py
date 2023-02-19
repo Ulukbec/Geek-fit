@@ -1,33 +1,32 @@
-from django.shortcuts import render
-from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import *
 from .models import *
-from rest_framework import status
-from rest_framework.generics import ListCreateAPIView, ListAPIView
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 
 
 # Create your views here.
 
-class PersonalInformAPIView(ListAPIView):
-    queryset = PersonalInform
-    serializer_class = PersonalInformSerializer
 
-
-class PersonalInformCreateAPIView(ListCreateAPIView):
+class PersonalInformRUDAPIView(RetrieveUpdateDestroyAPIView):
     queryset = PersonalInform.objects.all()
-    serializers = PersonalInformSerializer
+    serializer_class = PersonalInformSerializer
+    lookup_field = 'id'
+
+
+class MyCardAPIView(ListCreateAPIView):
+    queryset = MyCard.objects.all()
+    serializer_class = MyCardSerializer
 
     def create(self, request, *args, **kwargs):
-        serializer = PersonalInformValidateSerializer(data=request.data)
+        serializer = MyCardValidateSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        my_card = MyCard.objects.create(**serializer.validated_data)
+        my_card.save()
+        return Response(data={"message": "data received",
+                              'my_card': self.serializer_class(my_card).data})
 
-        if not serializer.is_valid():
-            return Response(data={'error': serializer.errors})
 
-        gmail = serializer.validated_data.get('gmail')
-        phone_number = serializer.validated_data.get('phone_number')
-        gender = serializer.validated_data.get('gender')
-        personal_area = PersonalInform.objects.create(gmail=gmail, phone_number=phone_number, gender=gender)
-        personal_area.save()
-        return Response(data={'message': 'data received',
-                              'personal_area': PersonalInformSerializer(personal_area).data})
+class MyCardRUDAPIView(RetrieveUpdateDestroyAPIView):
+    queryset = MyCard.objects.all()
+    serializer_class = MyCardSerializer
+    lookup_field = 'id'
