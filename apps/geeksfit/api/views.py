@@ -1,7 +1,7 @@
 from rest_framework.response import Response
 from rest_framework import status
-from geeksfit.models import Training, Category, Review
-from geeksfit.serializers import TrainingSerializer, TrainingValidateSerializer, CategorySerializer, ReviewSerializer, ReviewValidateSerializer
+from apps.geeksfit.models import Training, Category, Review
+from apps.geeksfit.api.serializers import TrainingSerializer, TrainingValidateSerializer, CategorySerializer, ReviewSerializer, ReviewValidateSerializer
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.viewsets import ModelViewSet
 

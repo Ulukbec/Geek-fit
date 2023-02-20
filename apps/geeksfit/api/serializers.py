@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
-from geeksfit.models import Training, Category, Review
+from apps.geeksfit.models import Training, Category, Review
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
