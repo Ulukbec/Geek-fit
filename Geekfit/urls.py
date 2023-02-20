@@ -24,14 +24,8 @@ urlpatterns = [
     path('api/v1/trainings/<int:id>/', views.TrainingModelViewSet.as_view({
         'get': 'retrieve', 'put': 'update', 'delete': 'destroy'
     })),
-    path('api/v1/categories/', views.CategoryModelViewSet.as_view({'get': 'list'})),
-    path('api/v1/categories/<int:id>/', views.CategoryModelViewSet.as_view({'get': 'retrieve'})),
-    path('api/v1/reviews/', views.ReviewModelViewSet.as_view({'get': 'list', 'post': 'create'})),
-    path('api/v1/reviews/<int:id>', views.ReviewModelViewSet.as_view({
-        'get': 'retrieve', 'put': 'update', 'delete': 'destroy'
-    })),
 
-    path('api/v1/users/', include('users.urls'))
+    # path('api/v1/users/', include('users.urls'))
 ]
 
 urlpatterns += yasg.urlpatterns

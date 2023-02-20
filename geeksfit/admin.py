@@ -1,7 +1,5 @@
 from django.contrib import admin
-from .models import Training, Category, Review
+from .models import Training
 
 admin.site.register(Training)
-admin.site.register(Category)
-admin.site.register(Review)
 
