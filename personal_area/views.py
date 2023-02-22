@@ -26,7 +26,6 @@ class PersonalInformRUAPIView(RetrieveUpdateAPIView):
     lookup_field = 'id'
 
 
-
 class MyCardAPIView(ListCreateAPIView):
     queryset = MyCard.objects.all()
     serializer_class = MyCardSerializer
