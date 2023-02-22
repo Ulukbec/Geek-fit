@@ -1,6 +1,0 @@
-.idea
-venv
-db.sqlite3
-static
-media
-.env
