@@ -25,7 +25,7 @@ urlpatterns = [
     path('api/v1/personal_area/', include('personal_area.urls')),
 
     path('api/v1/users/', include('users.urls')),
-    path('api/v1/geeksfit/', include('geeksfit.urls'))
+    path('api/v1/geeksfit/', include('geeksfit.urls')),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
