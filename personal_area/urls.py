@@ -3,7 +3,7 @@ from . import views
 
 urlpatterns = [
     path('personal_inform_view/', views.PersonalInformAPIView.as_view()),
-    path('personal_inform_detail/<int:id>/', views.PersonalInformRUDAPIView.as_view()),
+    path('personal_inform_edit/<int:id>/', views.PersonalInformRUAPIView.as_view()),
     path('my_card/', views.MyCardAPIView.as_view()),
-    path('my_card/<int:id>/', views.MyCardRUDAPIView.as_view()),
+    path('my_card/<int:id>/', views.MyCardRUAPIView.as_view()),
 ]

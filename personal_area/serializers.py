@@ -6,37 +6,13 @@ from phonenumber_field.serializerfields import PhoneNumberField
 class PersonalInformSerializer(serializers.ModelSerializer):
     class Meta:
         model = PersonalInform
-        fields = 'id image name gmail gender phone'.split()
+        fields = 'id image gmail name gender phone'.split()
 
 
 class MyCardSerializer(serializers.ModelSerializer):
     class Meta:
         model = MyCard
         fields = 'full_name card_number month year cvc'.split()
-
-
-class FavoritesPersonalInformSerializer(serializers.HyperlinkedModelSerializer):
-    personal_inform = PersonalInformSerializer(many=True)
-
-    class Meta:
-        model = FavoritesPersonalInform
-        fields = 'favorites personal_inform'.split()
-
-
-class FavoritesSerializer(serializers.HyperlinkedModelSerializer):
-    favorites_personal_inform = PersonalInformSerializer(many=True)
-
-    class Meta:
-        model = Favorites
-        fields = 'user favorites_personal_inform'.split()
-
-
-class UserSerializer(serializers.HyperlinkedModelSerializer):
-    favorites = FavoritesSerializer(many=True)
-
-    class Meta:
-        model = User
-        fields = 'id basket'.split()
 
 
 class MyCardValidateSerializer(serializers.Serializer):
@@ -48,7 +24,6 @@ class MyCardValidateSerializer(serializers.Serializer):
 
 
 class PersonalInformValidateSerializer(serializers.Serializer):
-    image = serializers.ImageField(default='Без_названия.jpg')
     name = serializers.CharField()
     gmail = serializers.EmailField()
     phone = PhoneNumberField()

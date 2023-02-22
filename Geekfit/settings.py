@@ -30,18 +30,25 @@ ALLOWED_HOSTS = ['*']
 DOWNLOAD_APPS = [
     'rest_framework',
     'drf_yasg',
-    'phonenumber_field'
+    'phonenumber_field',
+    'django_filters',
 
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}
 
 CREATED_APPS = [
     'users',
     'personal_area',
+    'geeksfit',
 ]
 
 # Application definition
 
 INSTALLED_APPS = [
+                     'jazzmin',
                      'django.contrib.admin',
                      'django.contrib.auth',
                      'django.contrib.contenttypes',
