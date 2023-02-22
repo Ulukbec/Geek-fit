@@ -13,3 +13,5 @@ class TrainingDetailView(RetrieveAPIView):
     queryset = Training.objects.all()
     serializer_class = TrainingDetailSerializer
     lookup_field = 'id'
+
+
