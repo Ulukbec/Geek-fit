@@ -6,3 +6,4 @@ media
 config/.env
 .vscode
 apps/**/migrations/*
+__pycache__/
