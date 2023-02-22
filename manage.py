@@ -3,10 +3,11 @@
 import os
 import sys
 import dotenv
+from Geekfit import settings
 
 
 def main():
-    dotenv.read_dotenv()
+    dotenv.load_dotenv(settings.env_path)
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Geekfit.settings')
     try:

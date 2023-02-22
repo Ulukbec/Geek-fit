@@ -3,6 +3,6 @@ venv
 db.sqlite3
 static
 media
-.env
+config/.env
 .vscode
-**/migrations/
+apps/**/migrations/*
