@@ -13,3 +13,9 @@ class TrainingDetailView(RetrieveAPIView):
     queryset = Training.objects.all()
     serializer_class = TrainingDetailSerializer
     lookup_field = 'id'
+
+
+class FavoriteTrainingListAPIView(ListAPIView):
+    queryset = FavoriteTraining.objects.all()
+    serializer_class = FavoriteTrainingSerializer
+    lookup_field = 'id'
