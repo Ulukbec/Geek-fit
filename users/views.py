@@ -53,3 +53,5 @@ class LoginViewSet(GenericViewSet):
 
     def list(self, request):
         return Response(status=status.HTTP_200_OK)
+
+from django.shortcuts import render
