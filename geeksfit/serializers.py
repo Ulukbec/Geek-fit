@@ -14,6 +14,12 @@ class TrainingDetailSerializer(serializers.ModelSerializer):
         fields = 'title description video'.split()
 
 
+class FavoriteTrainingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FavoriteTraining
+        fields = '__all__'
+
+
 class TrainingValidateSerializer(serializers.Serializer):
     title = serializers.CharField()
     description = serializers.CharField(required=False)
