@@ -3,7 +3,6 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser, PermissionsMixin, BaseUserManager, UserManager
 
 
-
 class CustomUser(BaseUserManager):
     def create_user(self, username, password, **extra_fields):
         if not username:
@@ -30,7 +29,7 @@ class CustomUser(BaseUserManager):
         return self.create_user(username=username, password=password, **extra_fields)
 
 
-class User(AbstractUser):
+class User(AbstractBaseUser):
     username = models.CharField(max_length=30, unique=True, null=True, help_text='Enter your name')
     email = models.EmailField(null=True, unique=True, help_text='Enter your nickname')
     password = models.CharField(max_length=40, unique=True, help_text='Enter your password')

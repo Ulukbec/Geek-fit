@@ -14,6 +14,10 @@ class TrainingDetailView(RetrieveAPIView):
     serializer_class = TrainingDetailSerializer
     lookup_field = 'id'
 
+    def get(self, request, *args, **kwargs):
+        user = User.objects.get(id='the_user_id')
+        user.favorites.values('training')
+
 
 class FavoriteTrainingListAPIView(ListAPIView):
     queryset = FavoriteTraining.objects.all()

@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from datetime import timedelta
 from pathlib import Path
 from pickle import TRUE
-from dotenv import dotenv_values
 from pathlib import Path
 import os
 
@@ -24,8 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-SECRET_KEY = dotenv_values('.env')['SECRET_KEY']
-
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True if os.environ.get('DEBUG') == 'on' else False
@@ -36,13 +34,9 @@ DOWNLOAD_APPS = [
     'rest_framework',
     'drf_yasg',
     'phonenumber_field',
-    'django_filters',
     'rest_framework.authtoken'
 
-
 ]
-
-
 
 CREATED_APPS = [
     'users',
@@ -54,7 +48,6 @@ CREATED_APPS = [
 # Application definition
 
 INSTALLED_APPS = [
-
                      'jazzmin',
                      'django.contrib.admin',
                      'django.contrib.auth',
@@ -139,8 +132,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(days=1),

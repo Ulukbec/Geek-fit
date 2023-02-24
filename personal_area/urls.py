@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 
+
 urlpatterns = [
     path('personal_inform_view/', views.PersonalInformAPIView.as_view()),
     path('personal_inform_edit/<int:id>/', views.PersonalInformRUAPIView.as_view()),
