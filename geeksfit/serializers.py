@@ -16,8 +16,8 @@ class TrainingDetailSerializer(serializers.ModelSerializer):
 
 class FavoriteTrainingSerializer(serializers.ModelSerializer):
     class Meta:
-        model = FavoriteTraining
-        fields = 'training user'
+        model = FavoriteTraining()
+        fields = 'training user'.split()
 
 
 class TrainingValidateSerializer(serializers.Serializer):

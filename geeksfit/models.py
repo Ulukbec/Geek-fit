@@ -18,7 +18,7 @@ class FavoriteTraining(models.Model):
         Training, on_delete=models.CASCADE
     )
     user = models.ForeignKey(
-        User, on_delete=models.CASCADE
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE
     )
 
     def __str__(self):
