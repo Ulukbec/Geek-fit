@@ -1,3 +1,5 @@
+import json
+
 from django.db import IntegrityError
 from rest_framework import serializers
 from rest_framework.serializers import *
@@ -15,7 +17,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         extra_kwargs = {"password": {'write_only': True}}
 
     def validate_password(self, attrs):
-        password_exists = User.objects.filter(password=attrs['password']).exists()
+        password_exists = User.objects.filter(password=(attrs['password'])).exists()
         if password_exists:
             return super().validate(attrs)
         return 'password already exists'
