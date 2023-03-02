@@ -15,6 +15,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         extra_kwargs = {"password": {'write_only': True}}
 
 
+
 class LoginSerializer(serializers.Serializer):
     username = serializers.CharField(max_length=300)
     password = serializers.CharField()
