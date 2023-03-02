@@ -37,13 +37,14 @@ class LoginViewSet(GenericViewSet):
             access = AccessToken.for_user(user)
             return Response(
                 {
+                    'messege': 'authenticate successfully',
                     "status": status.HTTP_200_OK,
                     "user": user.username,
                     "token": str(refresh),
                     "access_token": str(access)
                 }
             )
-        return Response(status=status.HTTP_400_BAD_REQUEST)
+        return Response(status=status.HTTP_400_BAD_REQUEST, data={'message': 'username or password incorrect!'})
 
     def list(self, request):
         return Response(status=status.HTTP_200_OK)
