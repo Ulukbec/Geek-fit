@@ -58,15 +58,6 @@ INSTALLED_APPS = [
 
 REST_USE_JWT = True
 
-REST_FRAMEWORK = {
-    "NON_FIELD_ERRORS_KEY": 'error',
-    "DEFAULT_AUTHENTICATION_CLASSES": (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-        'rest_framework.authentication.TokenAuthentication',
-    )}
-
-AUTH_USER_MODEL = 'users.User'
-
 AUTH_USER_MODEL = 'users.User'
 
 MIDDLEWARE = [
