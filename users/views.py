@@ -5,24 +5,19 @@ from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 from rest_framework_simplejwt.tokens import RefreshToken, AccessToken
 
+from users.models import User
 from users.serializers import RegisterSerializer, LoginSerializer
-
 
 class RegisterViewSet(GenericViewSet):
     serializer_class = RegisterSerializer
     permission_classes = [AllowAny]
 
-    def post(self, request):
+    def post(self, request) :
         data = request.data
         serializer = self.serializer_class(data=data)
-        if serializer.is_valid(raise_exception=True):
-            serializer.save()
-            response = {
-                "message": "User created Successfully",
-                "data": serializer.data
-            }
-
-            return Response(data=response, status=status.HTTP_201_CREATED)
+        serializer.is_valid(raise_exception=True)
+        user = User.objects.create_user(**serializer.validated_data)
+        user.save()
         return Response(data=serializer.data, status=status.HTTP_400_BAD_REQUEST)
 
     def list(self, request):
@@ -42,14 +37,14 @@ class LoginViewSet(GenericViewSet):
             access = AccessToken.for_user(user)
             return Response(
                 {
+                    'messege': 'authenticate successfully',
                     "status": status.HTTP_200_OK,
                     "user": user.username,
                     "token": str(refresh),
                     "access_token": str(access)
                 }
             )
-            return Response(data=response, status=status.HTTP_200_OK)
-        return Response(status=status.HTTP_400_BAD_REQUEST)
+        return Response(status=status.HTTP_400_BAD_REQUEST, data={'message': 'username or password incorrect!'})
 
     def list(self, request):
         return Response(status=status.HTTP_200_OK)
