@@ -24,6 +24,7 @@ class MyCardValidateSerializer(serializers.Serializer):
 
 
 class PersonalInformValidateSerializer(serializers.Serializer):
+    image = serializers.ImageField()
     name = serializers.CharField()
     gmail = serializers.EmailField()
     phone = PhoneNumberField()
