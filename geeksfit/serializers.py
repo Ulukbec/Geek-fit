@@ -21,6 +21,7 @@ class FavoriteTrainingSerializer(serializers.ModelSerializer):
 
 
 class TrainingValidateSerializer(serializers.Serializer):
+    image = serializers.ImageField()
     title = serializers.CharField()
     description = serializers.CharField(required=False)
     duration = serializers.CharField()
