@@ -5,13 +5,13 @@ from geeksfit.models import *
 class TrainingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Training
-        fields = ('title', 'duration')
+        fields = ('image', title', 'duration')
 
 
 class TrainingDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Training
-        fields = 'title description video'.split()
+        fields = 'title description'.split()
 
 
 class FavoriteTrainingSerializer(serializers.ModelSerializer):
