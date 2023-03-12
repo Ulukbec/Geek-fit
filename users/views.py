@@ -8,11 +8,12 @@ from rest_framework_simplejwt.tokens import RefreshToken, AccessToken
 from users.models import User
 from users.serializers import RegisterSerializer, LoginSerializer
 
+
 class RegisterViewSet(GenericViewSet):
     serializer_class = RegisterSerializer
     permission_classes = [AllowAny]
 
-    def post(self, request) :
+    def post(self, request):
         data = request.data
         serializer = self.serializer_class(data=data)
         serializer.is_valid(raise_exception=True)

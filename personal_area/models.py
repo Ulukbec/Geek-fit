@@ -6,9 +6,9 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 
 class PersonalInform(models.Model):
-    image = models.ImageField(null=True)
+    image = models.ImageField()
     name = models.CharField(max_length=100)
-    gmail = models.EmailField()
+    email = models.EmailField()
     phone = PhoneNumberField()
     gender = models.CharField(choices=(
         ("Мужчина", "Мужчина"),

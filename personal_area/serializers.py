@@ -1,4 +1,5 @@
 from rest_framework import serializers
+
 from .models import *
 from phonenumber_field.serializerfields import PhoneNumberField
 
@@ -6,7 +7,7 @@ from phonenumber_field.serializerfields import PhoneNumberField
 class PersonalInformSerializer(serializers.ModelSerializer):
     class Meta:
         model = PersonalInform
-        fields = 'id image gmail name gender phone'.split()
+        fields = 'id image name email phone gender'.split()
 
 
 class MyCardSerializer(serializers.ModelSerializer):
@@ -24,7 +25,7 @@ class MyCardValidateSerializer(serializers.Serializer):
 
 
 class PersonalInformValidateSerializer(serializers.Serializer):
+    image = serializers.ImageField(default='user.png')
     name = serializers.CharField()
-    gmail = serializers.EmailField()
     phone = PhoneNumberField()
     gender = serializers.CharField()

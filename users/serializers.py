@@ -1,5 +1,4 @@
 from rest_framework import serializers
-from rest_framework.serializers import *
 from users.models import User
 from rest_framework.validators import UniqueValidator
 
@@ -13,8 +12,6 @@ class RegisterSerializer(serializers.ModelSerializer):
         model = User
         fields = ['username', 'password', 'email']
         extra_kwargs = {"password": {'write_only': True}}
-
-
 
 
 class LoginSerializer(serializers.Serializer):

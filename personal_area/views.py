@@ -6,7 +6,6 @@ from rest_framework.generics import ListCreateAPIView, RetrieveUpdateAPIView
 
 # Create your views here.
 
-
 class PersonalInformAPIView(ListCreateAPIView):
     queryset = PersonalInform.objects.all()
     serializer_class = PersonalInformSerializer
