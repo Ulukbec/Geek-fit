@@ -5,7 +5,7 @@ from geeksfit.models import *
 class TrainingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Training
-        fields = ('image', title', 'duration')
+        fields = ('image', 'title', 'duration')
 
 
 class TrainingDetailSerializer(serializers.ModelSerializer):
