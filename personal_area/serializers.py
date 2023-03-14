@@ -1,6 +1,13 @@
 from rest_framework import serializers
 from .models import *
 from phonenumber_field.serializerfields import PhoneNumberField
+from users.models import User
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['email']
 
 
 class PersonalInformSerializer(serializers.ModelSerializer):
