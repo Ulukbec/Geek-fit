@@ -2,9 +2,25 @@ from rest_framework.response import Response
 from .serializers import *
 from .models import *
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateAPIView
-
+from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
+
+
+class EmailProfileView(RetrieveUpdateAPIView):
+    serializer_class = UserSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_object(self):
+        return self.request.user
+
+    def update(self, request, *args, **kwargs):
+        user = self.get_object()
+        email = request.data.get('email')
+        user.email = email
+        user.save(update_fields=['email'])
+        serializer = self.get_serializer(user)
+        return Response(serializer.data)
 
 
 class PersonalInformAPIView(ListCreateAPIView):
