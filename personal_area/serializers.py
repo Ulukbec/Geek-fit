@@ -31,7 +31,11 @@ class MyCardValidateSerializer(serializers.Serializer):
 
 
 class PersonalInformValidateSerializer(serializers.Serializer):
+<<<<<<< HEAD
     image = serializers.ImageField(default='user.png')
+=======
+    image = serializers.ImageField()
+>>>>>>> adf4293ed7d76528e7f8e775232b737b04318074
     name = serializers.CharField()
     phone = PhoneNumberField()
     gender = serializers.CharField()

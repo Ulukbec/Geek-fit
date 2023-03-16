@@ -7,7 +7,11 @@ class Training(models.Model):
     image = models.ImageField(default='user.png')
     title = models.CharField(max_length=100)
     description = models.TextField(blank=True)
+<<<<<<< HEAD
     duration = models.PositiveIntegerField(default=60)
+=======
+    duration = models.PositiveIntegerField()
+>>>>>>> adf4293ed7d76528e7f8e775232b737b04318074
 
     def __str__(self):
         return self.title

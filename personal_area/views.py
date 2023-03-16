@@ -1,7 +1,10 @@
 from .serializers import *
 from .models import *
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateAPIView
+<<<<<<< HEAD
 from rest_framework.response import Response
+=======
+>>>>>>> adf4293ed7d76528e7f8e775232b737b04318074
 from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
