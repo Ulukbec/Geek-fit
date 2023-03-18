@@ -2,7 +2,9 @@ from rest_framework import serializers
 from .models import *
 from phonenumber_field.serializerfields import PhoneNumberField
 from users.models import User
-#Всё работает
+
+
+# Всё работает
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:

@@ -2,17 +2,25 @@ from rest_framework import serializers
 from geeksfit.models import *
 
 
+class TrainingLevelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TrainingLevel
+        fields = 'level'.split()
+
+
+class TrainingDetailSerializer(serializers.ModelSerializer):
+    level_training = TrainingLevelSerializer(many=False).fields.get('level')
+
+    class Meta:
+        model = Training
+        fields = 'level_training title description'.split()
+
+
 class TrainingSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Training
         fields = ('image', 'title', 'duration')
-
-
-class TrainingDetailSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Training
-        fields = 'title description'.split()
 
 
 class FavoriteTrainingSerializer(serializers.ModelSerializer):
